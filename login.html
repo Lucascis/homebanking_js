@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homebanking</title>
+    <script src="./js/tools.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="./js/homebanking.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <input type="checkbox" id="chk" aria-hidden="true" />
+
+      <div class="login">
+        <form id="formularioSignin" name="formularioSignin" oninput="signin()">
+          <label for="chk" aria-hidden="true">Thanos</label>
+          <input id="emailLogin" type="" name="email" placeholder="Email"/>
+          <input
+            id="passwordLogin"
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+          />
+          <button type="submit">Ingresar</button>
+          <p id="errorLogin" class="noMostrar">Mensaje despues de verificar</p>
+        </form>
+      </div>
+
+      <div class="signup">
+        <form class="formularioSignup" id="formularioSignup">
+          <label for="chk" aria-hidden="true">Crear Cuenta</label>
+          <div class="name">
+            <input id="nombre" type="text" name="nombre" placeholder="Nombre"/>
+            <input id="apellido" type="text" name="apellido" placeholder="Apellido"/>
+          </div>
+          <input id="dni" type="" name="dni" placeholder="DNI"/>
+          <input id="email" type="email" name="email" placeholder="Email"/>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+          />
+          <button type="submit" >Crear</button>
+          <p id="error" class="noMostrar">Mensaje despues de verificar</p>
+        </form>
+      </div>
+    </div>
+    <script src="./js/signup.js"></script>
+  </body>
+</html>
+
