@@ -1,16 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homebanking</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
     <script src="./js/tools.js"></script>
     <script src="./js/login.js"></script>
-</head>
-<body onload="checkLogin()">
-    <h1 id="bienvenida">hola</h1>
-    <input type="button" value="Cerrar Sesion" onclick="logout()">
+  </head>
+  <body onload="checkLogin(), saldo()">
+    <body>
+      <div class="header">
+        <img class="logo" src="./img/logothanos.png" />
+        <div class="align-left">
+          <span id="bienvenida"></span>
+          <input type="button" value="Cerrar Sesion" onclick="logout()" />
+        </div>
+      </div>
+      <div class="big-container">
+        <div class="menu-container">
+          <button class="tu-cuenta links" id="cuenta" onclick="saldo()">
+            Cuenta
+          </button>
+          <button class="links" onclick="mostrarRetirar()">
+            Retirar dinero
+          </button>
+          <button class="links" onclick="mostrarDepositar()">
+            Depositar dinero
+          </button>
+          <button class="links" onclick="mostrarTransferir()">
+            Transferir dinero
+          </button>
+        </div>
+        <div class="small-container">
+          <div class="cuenta-info">
+            <p id="box-info"></p>
+            <div id="saldo-cuenta">$</div>
+            <p id="details"></p>
+          </div>
+        </div>
+      </div>
+    </body>
     <script src="./js/homebanking.js"></script>
-</body>
+  </body>
 </html>

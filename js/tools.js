@@ -31,5 +31,32 @@ function checkLogin(){
     if(!dataLogin){
         window.location.assign('./login.html')
     }
+
     
+}
+
+function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+function reverseString(string){
+    return string.split("").reverse().join("");
+}
+
+function cbuGenerator(dni){
+    dni = reverseString((dni).toString())
+    return `${randomInt(4000, 6000)}` + `${dni.slice(0,4)}` + `${randomInt(10000, 99999)}` + `${dni.slice(4)}` + `${randomInt(10000, 99999)}`
+}
+
+function findCBU(CBU) {
+    let indexCBU = cuentas.findIndex(elemento => elemento.userCBU === CBU);
+    if ( indexCBU != -1 ) {
+        return indexCBU;
+    } else {
+        return false;
+    }
+}
+
+function guardarDatos(){
+    localStorage.setItem('dataAccounts', JSON.stringify(cuentas))
 }

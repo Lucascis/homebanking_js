@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homebanking</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
     <script src="./js/tools.js"></script>
     <script src="./js/login.js"></script>
     <script src="./js/homebanking.js"></script>
@@ -21,7 +26,7 @@
       <div class="login">
         <form id="formularioSignin" name="formularioSignin" oninput="signin()">
           <label for="chk" aria-hidden="true">Thanos</label>
-          <input id="emailLogin" type="" name="email" placeholder="Email"/>
+          <input id="emailLogin" type="" name="email" placeholder="Email" />
           <input
             id="passwordLogin"
             type="password"
@@ -29,7 +34,7 @@
             placeholder="Contraseña"
           />
           <button type="submit">Ingresar</button>
-          <p id="errorLogin" class="noMostrar">Mensaje despues de verificar</p>
+          <p id="errorLogin" class="noMostrar"></p>
         </form>
       </div>
 
@@ -37,23 +42,27 @@
         <form class="formularioSignup" id="formularioSignup">
           <label for="chk" aria-hidden="true">Crear Cuenta</label>
           <div class="name">
-            <input id="nombre" type="text" name="nombre" placeholder="Nombre"/>
-            <input id="apellido" type="text" name="apellido" placeholder="Apellido"/>
+            <input id="nombre" type="text" name="nombre" placeholder="Nombre" />
+            <input
+              id="apellido"
+              type="text"
+              name="apellido"
+              placeholder="Apellido"
+            />
           </div>
           <input id="dni" type="" name="dni" placeholder="DNI"/>
-          <input id="email" type="email" name="email" placeholder="Email"/>
+          <input id="email" type="email" name="email" placeholder="Email" />
           <input
             id="password"
             type="password"
             name="password"
             placeholder="Contraseña"
           />
-          <button type="submit" >Crear</button>
-          <p id="error" class="noMostrar">Mensaje despues de verificar</p>
+          <button type="submit">Crear</button>
+          <p id="error" class="noMostrar"></p>
         </form>
       </div>
     </div>
     <script src="./js/signup.js"></script>
   </body>
 </html>
-

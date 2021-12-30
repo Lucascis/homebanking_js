@@ -1,4 +1,4 @@
-let formulario = document.getElementById('formularioSignup');
+let formulario = $('#formularioSignup');
 let inputs = document.querySelectorAll('#formularioSignup input');
 const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -50,45 +50,50 @@ inputs.forEach((input) => {
     input.addEventListener('blur', validarFormulario);
 });
 
-formulario.addEventListener('submit', (e) => {
+formulario.on('submit', (e) => {
     e.preventDefault();
     let send = true
+    let errorSignup = $("#error");
     for (element in campos) {
         if (campos[element]) {
-            document.getElementById('error').classList.remove('mostrar');
-            document.getElementById('error').classList.add('noMostrar');
+            errorSignup.removeClass('mostrar');
+            errorSignup.addClass('noMostrar');
         } else {
-            document.getElementById('error').innerHTML = capitalize(`${element} incorrecto`);
-            document.getElementById('error').classList.add('mostrar');
-            document.getElementById('error').classList.remove('noMostrar');
+            errorSignup.text(capitalize(`${element} incorrecto`));
+            errorSignup.addClass('mostrar');
+            errorSignup.removeClass('noMostrar');
             send = false
             break;
         }
     }
     if (send) {
         let userData = {
-            firstName: capitalize(document.getElementById("nombre").value),
-            lastName: capitalize(document.getElementById("apellido").value),
-            dni: document.getElementById("dni").value,
-            email: document.getElementById("email").value.toLowerCase(),
-            password: btoa(document.getElementById("password").value)
+            firstName: capitalize($("#nombre").val()),
+            lastName: capitalize($("#apellido").val()),
+            dni: $("#dni").val(),
+            email: $("#email").val().toLowerCase(),
+            password: btoa($("#password").val())
         }
         if (validateAccount(userData.dni, userData.email)) {
-            document.getElementById('error').classList.add('mostrar');
-            document.getElementById('error').classList.remove('noMostrar');
-            document.getElementById('error').innerHTML = `Parece que ya tienes una cuenta. <a href="./login.html">Ingresá</a>`;
+            errorSignup.addClass('mostrar');
+            errorSignup.removeClass('noMostrar');
+            errorSignup.text(`Parece que ya tienes una cuenta. `);
+            errorSignup.append('<a href="./login.html">Ingresá</a>');
         } else {
-            document.getElementById('error').classList.add('mostrar');
-            document.getElementById('error').classList.remove('noMostrar');
-            document.getElementById('error').innerHTML = `Cuenta creada con exito! <a href="./login.html">Ingresá</a>`;
+            errorSignup.addClass('mostrar');
+            errorSignup.removeClass('noMostrar');
+            errorSignup.text(`Cuenta creada con exito! `);
+            errorSignup.append('<a href="./login.html">Ingresá</a>');
             crearCuenta(
                 userData.firstName,
                 userData.lastName,
                 userData.dni,
                 userData.email,
-                userData.password
+                userData.password,
+                cbuGenerator(userData.dni), //retorna el cbu que se asociara a la cuenta
+                0 //saldo inicial
             );
-            formulario.reset()
+            formulario[0].reset()
         }
     }
 });
