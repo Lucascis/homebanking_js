@@ -86,12 +86,10 @@ function signin() {
 
 function login(userEmail, userPassword) {
     let indexEmail = cuentas.findIndex(elemento => elemento.userEmail == userEmail);
-    let indexPassword = cuentas.findIndex(elemento => elemento.userPassword == userPassword);
-    if ((indexEmail != -1 && indexPassword != -1) && indexEmail == indexPassword) {
-        let index = indexEmail;
-        if (cuentas[index].userEmail == userEmail && cuentas[index].userPassword == userPassword) {
-            window.location.assign('./index.html')
-            return index;
+    if (indexEmail != -1) {
+        if (cuentas[indexEmail].userPassword == userPassword){
+            window.location.assign('./index.html');
+            return indexEmail;
         } else {
             return false;
         }
