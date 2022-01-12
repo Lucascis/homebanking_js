@@ -57,7 +57,7 @@ function mostrarRetirar() {
     $('#details').text('')
     $('#box-info').text('Ingrese la cantidad a retirar')
     $('#saldo-cuenta').html(`<input autocomplete="off" class="inputs" name="extraer" id="extraer">`)
-    $('#details').html(`<button class='interfaceBtn' onclick="retirar()">Retirar</button>`)
+    $('#details').append(`<button class='interfaceBtn' onclick="retirar()">Retirar</button>`)
 }
 
 function retirar() {
@@ -68,11 +68,15 @@ function retirar() {
         $('#details').text('Operacion realizada con exito!');
     } else {
         $('#details').text('No se pudo realizar la operacion.')
-            .delay(3000)
+            .delay(2000)
             .fadeOut(1000, () => {
                 $('#details').text('Asegurese de tener fondos en su cuenta e intente nuevamente.')
                     .fadeIn(2000)
-            });
+                    .fadeOut(2000, function () {
+                        $('#details').fadeIn()
+                        mostrarRetirar();
+                    })
+            })
     }
 }
 
@@ -91,10 +95,14 @@ function depositar() {
         $('#details').text('Operacion realizada con exito!');
     } else {
         $('#details').text('No se pudo realizar la operacion.')
-            .delay(3000)
+            .delay(2000)
             .fadeOut(1000, () => {
                 $('#details').text('Asegurese de que el monto sea mayor a cero e intente nuevamente.')
                     .fadeIn(2000)
+                    .fadeOut(2000, function () {
+                        $('#details').fadeIn()
+                        mostrarDepositar();
+                    })
             });
     }
 }
@@ -131,6 +139,10 @@ function transferir() {
             .fadeOut(1000, () => {
                 $('#details').text('Asegurese de ingresar los datos de manera correcta e intente nuevamente.')
                     .fadeIn(2000)
+                    .fadeOut(2000, function () {
+                        $('#details').fadeIn()
+                        mostrarTransferir();
+                    })
             });
     }
 }
