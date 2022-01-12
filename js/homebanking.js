@@ -56,8 +56,8 @@ function crearCuenta(userFirstName, userLastName, userDni, userEmail, userPasswo
 function mostrarRetirar() {
     $('#details').text('')
     $('#box-info').text('Ingrese la cantidad a retirar')
-    $('#saldo-cuenta').html(`<input type="" name="extraer" id="extraer"> <button onclick="retirar()"> Retirar
-    </button>`)
+    $('#saldo-cuenta').html(`<input autocomplete="off" class="inputs" name="extraer" id="extraer">`)
+    $('#details').html(`<button class='interfaceBtn' onclick="retirar()">Retirar</button>`)
 }
 
 function retirar() {
@@ -67,15 +67,20 @@ function retirar() {
         guardarDatos();
         $('#details').text('Operacion realizada con exito!');
     } else {
-        $('#details').text('No se pudo realizar la operacion, intente nuevamente.');
+        $('#details').text('No se pudo realizar la operacion.')
+            .delay(3000)
+            .fadeOut(1000, () => {
+                $('#details').text('Asegurese de tener fondos en su cuenta e intente nuevamente.')
+                    .fadeIn(2000)
+            });
     }
 }
 
 function mostrarDepositar() {
     $('#details').text('')
     $('#box-info').text('Ingrese la cantidad a depositar')
-    $('#saldo-cuenta').html(`<input type="" name="depositar" id="depositar"> <button id="btn1" onclick="depositar()"> Depositar
-    </button>`)
+    $('#saldo-cuenta').html('<input autocomplete="off" class="inputs" name="depositar" id="depositar">')
+    $('#details').html('<button class="interfaceBtn" onclick="depositar()">Depositar</button>')
 }
 
 function depositar() {
@@ -85,15 +90,20 @@ function depositar() {
         guardarDatos();
         $('#details').text('Operacion realizada con exito!');
     } else {
-        $('#details').text('No se pudo realizar la operacion, intente nuevamente.');
+        $('#details').text('No se pudo realizar la operacion.')
+            .delay(3000)
+            .fadeOut(1000, () => {
+                $('#details').text('Asegurese de que el monto sea mayor a cero e intente nuevamente.')
+                    .fadeIn(2000)
+            });
     }
 }
 
 function mostrarTransferir() {
     $('#details').text('')
     $('#box-info').text('Ingrese la cantidad a transferir')
-    $('#saldo-cuenta').html(`<input type="" name="transferir" id="transferir"> <p>Ingrese el CBU al que desea transferir</p> <input type="" name="CBU" id="CBU"> <button onclick="transferir()"> Transferir
-    </button>`)
+    $('#saldo-cuenta').html('<input autocomplete="off" class="inputs" name="transferir" id="transferir"> <p>Ingrese el CBU al que desea transferir</p> <input autocomplete="off" class="inputs" name="CBU" id="CBU">')
+    $('#details').html(`<button class="interfaceBtn" onclick="transferir()">Transferir</button>`)
 }
 
 function transferir() {
@@ -102,7 +112,7 @@ function transferir() {
     if (montoTransferir > 0 && targetCBU != -1 && (cuentas[dataLogin].userSaldo - montoTransferir >= 0)) {
         swal({
             title: `Transferencia`,
-            text: `¿Realizar transferencia a ${cuentas[targetCBU].userFirstName + ' ' + cuentas[targetCBU].userLastName}?`,
+            text: `¿Realizar transferencia a ${cuentas[targetCBU].userFirstName} ${cuentas[targetCBU].userLastName}?`,
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -111,25 +121,33 @@ function transferir() {
                 if (willDelete) {
                     cuentas[dataLogin].transferirDinero(montoTransferir, targetCBU);
                     guardarDatos();
-                    $('#details').text('Operacion realizada con exito!');
+                    $('#details').text('Operacion realizada con exito!')
+                        .fadeIn('slow');
                 }
             });
     } else {
-        $('#details').text('No se pudo realizar la operacion, intente nuevamente.')
+        $('#details').text('No se pudo realizar la operacion.')
+            .delay(3000)
+            .fadeOut(1000, () => {
+                $('#details').text('Asegurese de ingresar los datos de manera correcta e intente nuevamente.')
+                    .fadeIn(2000)
+            });
     }
 }
 
 
 function saldo() {
-    $('#details').text('')
-    $('#box-info').text('Saldo en tu cuenta')
+    $('#details').text('');
+    $('#box-info').text('Saldo en tu cuenta');
     $('#saldo-cuenta').text(`$${cuentas[dataLogin].verSaldo()}`);
-    $('#details').text(`CBU: ${cuentas[dataLogin].verCBU()}`)
+    $('#details').prepend(`<button id='showCBU' class="interfaceBtn">Mostrar CBU</button>`);
+    $('#showCBU').click(() => {
+        $('#details').text(`${cuentas[dataLogin].verCBU()}`);
+    })
 }
 
 recoverData();
-dataLogin = sessionStorage.getItem('dataLogin')
-console.log(cuentas)
+dataLogin = sessionStorage.getItem('dataLogin');
 if (dataLogin) {
-    $('#bienvenida').text(`¡Bienvenid@ ${cuentas[dataLogin].userFirstName}!`);
+    $('#bienvenida').text(`¡Hola ${cuentas[dataLogin].userFirstName}!`);
 }
