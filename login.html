@@ -24,7 +24,7 @@
       <input type="checkbox" id="chk" aria-hidden="true" />
 
       <div class="login">
-        <form id="formularioSignin" name="formularioSignin" oninput="signin()">
+        <form id="formularioSignin" name="formularioSignin" oninput="signin()" method="post">
           <label for="chk" aria-hidden="true">Thanos</label>
           <input id="emailLogin" type="" name="email" placeholder="Email" />
           <input
@@ -39,7 +39,7 @@
       </div>
 
       <div class="signup">
-        <form class="formularioSignup" id="formularioSignup">
+        <form class="formularioSignup" id="formularioSignup" method="post">
           <label for="chk" aria-hidden="true">Crear Cuenta</label>
           <div class="name">
             <input id="nombre" type="text" name="nombre" placeholder="Nombre" />

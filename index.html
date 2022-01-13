@@ -20,38 +20,36 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body onload="checkLogin(), saldo()">
-    <body>
-      <div class="header">
-        <img class="logo" src="./img/logothanos.png" />
-        <div class="align-left">
-          <span id="bienvenida"></span>
-          <button class='interfaceBtn logoutBtn' onclick="logout()">Cerrar Sesión</button>
+    <div class="header">
+      <img class="logo" src="./img/logothanos.png" />
+      <div class="align-left">
+        <span id="bienvenida"></span>
+        <button class="interfaceBtn logoutBtn" onclick="logout()">
+          Cerrar Sesión
+        </button>
+      </div>
+    </div>
+    <div class="big-container">
+      <div class="menu-container">
+        <button class="links" id="cuenta" onclick="saldo()">Cuenta</button>
+        <button class="links" onclick="mostrarRetirar()">Retirar dinero</button>
+        <button class="links" onclick="mostrarDepositar()">
+          Depositar dinero
+        </button>
+        <button class="links" onclick="mostrarTransferir()">
+          Transferir dinero
+        </button>
+      </div>
+      <div class="small-container">
+        <div class="cuenta-info">
+          <p id="box-info"></p>
+          <div id="saldo-cuenta">$</div>
+          <p id="details"></p>
         </div>
       </div>
-      <div class="big-container">
-        <div class="menu-container">
-          <button class="links" id="cuenta" onclick="saldo()">
-            Cuenta
-          </button>
-          <button class="links" onclick="mostrarRetirar()">
-            Retirar dinero
-          </button>
-          <button class="links" onclick="mostrarDepositar()">
-            Depositar dinero
-          </button>
-          <button class="links" onclick="mostrarTransferir()">
-            Transferir dinero
-          </button>
-        </div>
-        <div class="small-container">
-          <div class="cuenta-info">
-            <p id="box-info"></p>
-            <div id="saldo-cuenta">$</div>
-            <p id="details"></p>
-          </div>
-        </div>
-      </div>
-    </body>
+    </div>
+    <p id="anuncios">
+    </p>
     <script src="./js/homebanking.js"></script>
   </body>
 </html>

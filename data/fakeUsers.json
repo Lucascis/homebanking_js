@@ -1,0 +1,33 @@
+[
+    {
+        "userId": 1,
+        "firstname": "Carol",
+        "message": "ahora anda en su auto con ayuda de nuestros préstamos"
+    },
+    {
+        "userId": 2,
+        "firstname": "Marcelo",
+        "message": "sacó un préstamo y ahora disfruta de lo que más le gusta"
+    },
+    {
+        "userId": 3,
+        "firstname": "José",
+        "message": "uso los puntos acumulados con sus compras y conoció el lugar que quería"
+    },
+    
+    {
+        "userId": 4,
+        "firstname": "Ana",
+        "message": "se fue de vacaciones con nuetras tarjetas y obtuvo los mejores descuentos"
+    },
+    {
+        "userId": 5,
+        "firstname": "Cristian",
+        "message": "pudo comprarse el aire acondicionada que tanto quería"
+    },
+    {
+        "userId": 6,
+        "firstname": "Victoria",
+        "message": "disfruta de hacer transferencias a sus amigas de la forma más rápida y fácil"
+    }
+]

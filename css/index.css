@@ -162,6 +162,13 @@ body {
   outline: none;
 }
 
+#anuncios {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 20px;
+  color: #fff;
+}
+
 p {
   font-size: 16px;
 }

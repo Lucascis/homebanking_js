@@ -1,3 +1,4 @@
+const URLJSON = "data/fakeUsers.json"
 let cuentas = []
 //Si la lista esta vacia y hay datos de cuentas guardados...
 //Se vuelven a agregar como objetos de la clase Cuenta para usar sus metodos.
@@ -135,7 +136,7 @@ function transferir() {
             });
     } else {
         $('#details').text('No se pudo realizar la operacion.')
-            .delay(3000)
+            .delay(2000)
             .fadeOut(1000, () => {
                 $('#details').text('Asegurese de ingresar los datos de manera correcta e intente nuevamente.')
                     .fadeIn(2000)
@@ -146,7 +147,6 @@ function transferir() {
             });
     }
 }
-
 
 function saldo() {
     $('#details').text('');
@@ -163,3 +163,18 @@ dataLogin = sessionStorage.getItem('dataLogin');
 if (dataLogin) {
     $('#bienvenida').text(`¡Hola ${cuentas[dataLogin].userFirstName}!`);
 }
+
+$.getJSON(URLJSON, function (respuesta, estado) {
+    if (estado === "success") {
+        let misDatos = respuesta;
+        for (let dato of misDatos) {
+            console.log(dato.firstname)
+            $('#anuncios').fadeOut(3000, () => {
+                $('#anuncios').text(`¡${dato.firstname} ${dato.message}!`)
+            })
+                .delay(3000)
+                .fadeIn(2000)
+        }
+        $('#anuncios').fadeOut(2000)
+    }
+})
