@@ -21,14 +21,17 @@
   </head>
   <body onload="checkLogin(), saldo()">
     <div class="header">
-      <img class="logo" src="./img/logothanos.png" />
-      <div class="align-left">
-        <span id="bienvenida"></span>
+      <div class="logo">
+        <img class="logo-img" src="./img/logothanos.png" />
+        <h1>Thanos</h1>
+      </div>
+      <div class="logoutDiv">
         <button class="interfaceBtn logoutBtn" onclick="logout()">
           Cerrar Sesión
         </button>
       </div>
     </div>
+    <span id="bienvenida"></span>
     <div class="big-container">
       <div class="menu-container">
         <button class="links" id="cuenta" onclick="saldo()">Cuenta</button>
@@ -48,8 +51,7 @@
         </div>
       </div>
     </div>
-    <p id="anuncios">
-    </p>
+    <p id="anuncios"></p>
     <script src="./js/homebanking.js"></script>
   </body>
 </html>

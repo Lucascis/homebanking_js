@@ -130,7 +130,7 @@ function transferir() {
                 if (willDelete) {
                     cuentas[dataLogin].transferirDinero(montoTransferir, targetCBU);
                     guardarDatos();
-                    $('#details').text('Operacion realizada con exito!')
+                    $('.cuenta-info').text('Operacion realizada con exito!')
                         .fadeIn('slow');
                 }
             });
