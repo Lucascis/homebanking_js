@@ -12,7 +12,7 @@ en JSON que se muestran de manera aleatoria a modo de publicidad una vez loguead
 Para la sesion, tiene verificacion de logueo: Apenas ingresa a su cuenta se genera
 una cookie que mantiene activa la sesion, esta se borra al realizar un logout.
 
-## Project deploy on Vercel
+## Project deployed on Vercel
 
 [Homebaking - JS](https://homebanking-js.vercel.app/login.html)
 
